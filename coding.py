@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import tkinter.font
 
 
 ###### CLASS CODE ######
@@ -55,7 +56,7 @@ def update_balance():
 	balance_string = ""
 	for child in child_list:
 		progress= child.get_progress()
-		balance_string += "{}: ${:.2f}  - {}\n".format(child.name, child.allowance, progress)
+		balance_string += "{}: ${:.2f}  - {}\n\n".format(child.name, child.allowance, progress)
 
 	children_details.set(balance_string)
 
@@ -118,11 +119,18 @@ child_names = create_name_list()
 root=Tk()
 root.title("Clothing Allowance App")
 
+root.configure(bg = "#544E50")
+
+
+
+
+# Creates a font to use everywhere.
+good_font= tkinter.font.Font(family = "Helvetica", size = 12 )
 
 
 
 # Frame for the top part of the app.
-top_frame = ttk.LabelFrame(root)
+top_frame = Frame(root, background = "#DAD8D9", highlightbackground="#D9C8C0", highlightthickness=2)
 top_frame.grid(row=0, column=0, padx=10, pady=10, sticky="NSEW")
 
 
@@ -132,7 +140,7 @@ welcome_text = StringVar()
 welcome_text.set("Welcome! You can track and edit all your children's allowances and if they are on track to reach the goal.")
 
 # Creates and places the welcome label.
-welcome_label = ttk.Label(top_frame, textvariable=welcome_text, wraplength=300)
+welcome_label = ttk.Label(top_frame, textvariable=welcome_text, wraplength=300, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 welcome_label.grid(row=0, column=0, columnspan=2, padx = 10, pady = 10)
 
 
@@ -142,7 +150,7 @@ children_details = StringVar()
 
 
 # Create the details label and places it in the GUI.
-details_label = ttk.Label(top_frame, textvariable=children_details)
+details_label = ttk.Label(top_frame, textvariable=children_details, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 details_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 
@@ -152,12 +160,12 @@ details_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 
 # Frame for the bottom part of the app.
-bottom_frame = ttk.LabelFrame(root)
+bottom_frame = Frame(root, background = "#DAD8D9", highlightbackground="#D9C8C0", highlightthickness=2)
 bottom_frame.grid(row=1, column=0, padx=10, pady=10, sticky="NSEW")
 
 
 # Label for the child combobox and places it.
-name_label = ttk.Label(bottom_frame, text = "Who spent their allowance:")
+name_label = ttk.Label(bottom_frame, text = "Who spent their allowance:", font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 name_label.grid(row=3, column=0, padx = 10, pady = 10)
 
 # Creates variable and option list for child_box combobox.
@@ -172,7 +180,7 @@ child_box.grid(row=3, column=1, padx = 10, pady = 10)
 
 
 # Label for the price entry.
-price_label = ttk.Label(bottom_frame, text = "Price of clothing:")
+price_label = ttk.Label(bottom_frame, text = "Price of clothing:", font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 price_label.grid(row=4, column=0, padx = 10, pady = 10)
 
 # Variable to store the price of the item.
@@ -191,7 +199,7 @@ submit_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
 
 # Feedback label so the user knows what happened.
 button_feedback = StringVar()
-button_feedback_label = ttk.Label(bottom_frame, textvariable=button_feedback)
+button_feedback_label = ttk.Label(bottom_frame, textvariable=button_feedback, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 button_feedback_label.grid(row=7, column=0, columnspan=2)
 
 
