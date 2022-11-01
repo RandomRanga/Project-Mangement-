@@ -130,7 +130,7 @@ good_font= tkinter.font.Font(family = "Helvetica", size = 12 )
 
 
 # Frame for the top part of the app.
-top_frame = Frame(root, background = "#DAD8D9", highlightbackground="#D9C8C0", highlightthickness=2)
+top_frame = Frame(root, background = "#DAD8D9", highlightbackground="#D9C8C0", highlightthickness=5)
 top_frame.grid(row=0, column=0, padx=10, pady=10, sticky="NSEW")
 
 
@@ -140,8 +140,8 @@ welcome_text = StringVar()
 welcome_text.set("Welcome! You can track and edit all your children's allowances and if they are on track to reach the goal.")
 
 # Creates and places the welcome label.
-welcome_label = ttk.Label(top_frame, textvariable=welcome_text, wraplength=300, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
-welcome_label.grid(row=0, column=0, columnspan=2, padx = 10, pady = 10)
+welcome_label = Label(top_frame, textvariable=welcome_text, wraplength=300, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
+welcome_label.grid(row=0, column=0, columnspan=2, padx = 75, pady = 10)
 
 
 
@@ -150,7 +150,7 @@ children_details = StringVar()
 
 
 # Create the details label and places it in the GUI.
-details_label = ttk.Label(top_frame, textvariable=children_details, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
+details_label = Label(top_frame, textvariable=children_details, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 details_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 
@@ -160,27 +160,28 @@ details_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 
 # Frame for the bottom part of the app.
-bottom_frame = Frame(root, background = "#DAD8D9", highlightbackground="#D9C8C0", highlightthickness=2)
+bottom_frame = Frame(root, background = "#DAD8D9", highlightbackground="#D9C8C0", highlightthickness=5)
 bottom_frame.grid(row=1, column=0, padx=10, pady=10, sticky="NSEW")
 
 
 # Label for the child combobox and places it.
-name_label = ttk.Label(bottom_frame, text = "Who spent their allowance:", font = good_font, foreground = "#F4717F", background = "#DAD8D9")
+name_label = Label(bottom_frame, text = "Who spent their allowance:", font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 name_label.grid(row=3, column=0, padx = 10, pady = 10)
+
 
 # Creates variable and option list for child_box combobox.
 chosen_child = StringVar()
 chosen_child.set(child_names[0])
 
 # Combobox to select which child and places it.
-child_box = ttk.Combobox(bottom_frame, textvariable=chosen_child, state="readonly")
+child_box = ttk.Combobox(bottom_frame, textvariable=chosen_child, state="readonly", font = good_font, foreground = "#F4717F")
 child_box['values'] = child_names
 child_box.grid(row=3, column=1, padx = 10, pady = 10)
 
 
 
 # Label for the price entry.
-price_label = ttk.Label(bottom_frame, text = "Price of clothing:", font = good_font, foreground = "#F4717F", background = "#DAD8D9")
+price_label = Label(bottom_frame, text = "Price of clothing:", font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 price_label.grid(row=4, column=0, padx = 10, pady = 10)
 
 # Variable to store the price of the item.
@@ -188,18 +189,19 @@ price = DoubleVar()
 price.set("")
 
 # Entry for the user to enter the price of an item.
-price_entry = ttk.Entry(bottom_frame, textvariable = price)
+price_entry = ttk.Entry(bottom_frame, textvariable = price, font = good_font, foreground = "#F4717F")
 price_entry.grid(row=4, column=1, padx = 10 , pady = 10)
 
 
 
 # Submit button to submit price when the user has finished.
-submit_button = ttk.Button(bottom_frame, text="Submit", command = manage_feedback)
+submit_button = Button(bottom_frame, text="Submit", command = manage_feedback, font = good_font, fg = "#F4717F", bg = "#DAD8D9", highlightbackground="red", highlightthickness=5)
+
 submit_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
 
 # Feedback label so the user knows what happened.
 button_feedback = StringVar()
-button_feedback_label = ttk.Label(bottom_frame, textvariable=button_feedback, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
+button_feedback_label =Label(bottom_frame, textvariable=button_feedback, font = good_font, foreground = "#F4717F", background = "#DAD8D9")
 button_feedback_label.grid(row=7, column=0, columnspan=2)
 
 
